@@ -1,7 +1,8 @@
 
 import './App.css';
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import { MovieCard } from './components/MovieCard/MovieCard';
 import '@fontsource/poppins'; 
@@ -9,7 +10,10 @@ import Logo from './logo';
 import NavigationButton from './NavigationButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm, faTv, faStar, faPlay } from '@fortawesome/free-solid-svg-icons';
-import HelloWorld from './HelloWorld';
+import Popular from './pages/popular';
+import Nowplaying from './pages/nowplaying';
+import Upcoming from './pages/upcoming';
+
 
 
 function App() {
@@ -18,6 +22,7 @@ function App() {
   const apiKey = 'a676d18cf85d5c37a91f273496a3ffbb';
   const popularMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`;
   const searchPeopleUrl = 'https://api.themoviedb.org/3/search/multi';
+  //const popular1MoviesUrl= 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
 
   const getPopularMovies = async () => {
     try {
@@ -31,6 +36,7 @@ function App() {
       console.error(err);
     }
   };
+ 
 
   const searchMoviesByActor = async () => {
     try {
@@ -95,7 +101,7 @@ function App() {
   }, []); 
 
   return (
-    <Router>
+    <BrowserRouter>
     <div className="App">
       {/* Logo */}
       <Logo />
@@ -120,12 +126,14 @@ function App() {
         </div>
 
         {/* Routes */}
+        
         <Routes>
-          <Route path="/top-rated" element={<HelloWorld />} />
-          <Route path="/popular" element={<HelloWorld />} />
-          <Route path="/upcoming" element={<HelloWorld />} />
-          <Route path="/now-playing" element={<HelloWorld />} />
-        </Routes>
+          <Route path="/popular" element={<Popular/>} />
+          <Route path="/upcoming" element={<Upcoming />} />
+          <Route path="/now-playing" element={<Nowplaying />} />
+          </Routes>
+        
+        
 
         
 
@@ -139,7 +147,7 @@ function App() {
       </main>
 
     </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
