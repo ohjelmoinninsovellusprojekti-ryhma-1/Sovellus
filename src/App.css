@@ -1,20 +1,19 @@
+body {
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  background-color: #000000;
 }
 
 .App-header {
-  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .homeBody {
@@ -55,6 +54,7 @@
   bottom: 0;
   margin: 0;
 }
+
 .topbarButtons button{
   height: 50px;
   width: 100px;
@@ -85,19 +85,29 @@
   bottom: 0;
 }
 
+.loginCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerBox,
 .loginBox {
- position: relative;
+ position: absolute;
  background-color: rgb(0, 0, 0); 
  color: black;
  width: 400px;
  height: 600px;
  border-radius: 50px;
  display: flex;
- flex-direction: column;
  align-items: center;
  justify-content: center;
  box-shadow: rgba(175, 114, 0, 0.826) 15px 15px 30px 10px;
- border-style: double;
+ margin: 50px;
+ top: 120px;
+ left: 40%;
 }
 
 .loginBox input {
@@ -124,21 +134,64 @@
   font-family:'Times New Roman', Times, serif; 
 }
 
-.register {
+.loginBox .register {
   position: absolute;
   color: rgb(255, 149, 0);
   bottom: 20px;
   margin: 10px;
   font-size: 15px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  border: none;
 }
 
-.loginInfo {
+.loginBox .loginInfo {
   position: absolute;
   color: rgb(255, 149, 0);
   bottom: 80px;
   margin: 10px;
-  font-size: 15px;
+  font-size: 15px; 
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.loginBox .logInButton {
+  background-color: #000000;
+  color: rgb(255, 149, 0);
+  margin: 20px;
+  position: absolute;
+  bottom: 150px;
+  width: 85px;
+  height: 40px;
+  left: 130px;
+}
+
+.loginBox .logInButton h2 {
+  font-size: 17px;
+  margin: 8px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.registerBox Button {
+  background-color: #000000;
+  color: rgb(255, 149, 0);
+  margin: 20px;
+  position: absolute;
+  bottom: 50px;
+  width: 85px;
+  height: 40px;
+  border: none;
+}
+
+.registerBox label {
+  font-family:'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 25px;
+  color: rgba(255, 166, 0, 0.878);
+}
+
+.registerBox select {
+  width: 160px;
+  height: 25px;
+
+}
