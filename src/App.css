@@ -1,0 +1,205 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --background-color: #000000;
+  --primary-text-color: #f8fafc;
+  --card-bg-color: #fdba74;
+
+
+}
+body{
+  background-color: var(--background-color);
+  overflow-x: hidden;
+
+}
+.App {
+  text-align: center;
+}
+.content {
+  margin-top: 190px;
+}
+
+h1 {
+  color: #f59e0b;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.main{
+  display:flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; 
+  padding: 10px;
+  margin-bottom: 20px; 
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px; 
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+ 
+}
+
+
+.search-bar button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px; 
+  background-color: #f59e0b; 
+  color: #0c0a09; 
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+.search-bar button:hover {
+  background-color: #fff7ed; 
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.NavigationButtons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: background-color 0.3s ease-out;
+  
+ 
+}
+
+.NavigationButton {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  color: #0c0a09;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: background-color 0.3s ease-out;
+}
+
+.NavigationButton:hover {
+  background-color: #f59e0b;
+  cursor: pointer;
+  color: white;
+  transform: scale(1.05); 
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.NavigationButton p {
+  margin: 0;
+  color: transparent;
+}
+
+.NavigationButton button {
+  font-size: 16px; 
+  background: none;
+  border: none;
+  color: #0c0a09;
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+  height: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.NavigationButton:hover button {
+  color: white;
+}
+
+
+#topbarBackground {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+  
+}
+
+#topbarBackground h1 {
+  position: absolute;
+  color: rgb(255, 149, 0);
+  top: 0;
+  left: 0px;
+  margin: 30px;
+  font-size: 45px;
+  font-family:'Times New Roman', Times, serif; 
+  border-color: rgb(255, 149, 0);
+  border-radius: 0px 15px 0px 15px;
+  border-style: double;
+}
+
+.topbarButtons{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  
+}
+
+
+.topbarButtons button{
+  height: 50px;
+  width: 100px;
+  color: rgb(0, 0, 0);
+  color: white;
+  background: none;
+  border: none;
+}
+
+.topbarButtons button:hover {
+  border-bottom: 1px solid #ffffff;
+  border-top:1px solid #ffffff;
+  border-left: none;
+  border-right: none;
+  transition: all .3s linear;
+}
+
+.topbarButtons button h3{
+  float: left;
+  border: none;
+}
+
+.bottomline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.057);
+  bottom: 0;
+  
+}
+
+
+
+
