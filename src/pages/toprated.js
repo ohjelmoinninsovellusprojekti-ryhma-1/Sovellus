@@ -1,15 +1,15 @@
+// Popular.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PopularCard} from '../pages/popular.jsx';
 import './popular.css';
 
-const Upcoming = () => {
+const TopRated = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const apiKey = 'a676d18cf85d5c37a91f273496a3ffbb';
-  const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`;
+  const popularMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`;
   const searchPeopleUrl = 'https://api.themoviedb.org/3/search/multi';
-
 
   const searchMoviesByActor = async () => {
     try {
@@ -52,19 +52,20 @@ const Upcoming = () => {
 
   const handleSearch = async () => {
     if (searchTerm.trim() === "") {
-      
-      getUpcomingMovies();
+    
+      getPopularMovies();
     } else {
       searchMoviesByActor();
-      setSearchTerm(""); 
+      setSearchTerm("");
     }
   };
 
 
 
-  const getUpcomingMovies = async () => {
+
+  const getPopularMovies = async () => {
     try {
-      const response = await axios.get(upcomingMoviesUrl, {
+      const response = await axios.get(popularMoviesUrl, {
         params: {
           api_key: apiKey,
         },
@@ -76,12 +77,12 @@ const Upcoming = () => {
   };
 
   useEffect(() => {
-    getUpcomingMovies();
+    getPopularMovies();
   }, []);
 
   return (
-    <div className="upcoming">
-      <h1>Upcoming Movies</h1>
+    <div className="popular">
+      <h1>Top-Rated Movies</h1>
       <div className="search-bar">
             <input
               type="text"
@@ -100,9 +101,4 @@ const Upcoming = () => {
   );
 };
 
-export default Upcoming;
-
-
-
-
-
+export default TopRated;
