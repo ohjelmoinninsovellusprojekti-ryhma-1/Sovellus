@@ -1,0 +1,233 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.homeBody {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+#topbarBackground {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(0, 0, 0);
+}
+
+#topbarBackground h1 {
+  position: absolute;
+  color: rgb(255, 149, 0);
+  top: 0;
+  left: 0px;
+  margin: 30px;
+  font-size: 45px;
+  font-family:'Times New Roman', Times, serif; 
+  border-color: rgb(255, 149, 0);
+  border-radius: 0px 15px 0px 15px;
+  border-style: double;
+}
+
+.topbarButtons{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+}
+.topbarButtons button{
+  height: 50px;
+  width: 100px;
+  color: rgb(0, 0, 0);
+  color: white;
+  background: none;
+  border: none;
+}
+
+.topbarButtons button:hover {
+  border-bottom: 1px solid #ffffff;
+  border-top:1px solid #ffffff;
+  border-left: none;
+  border-right: none;
+  transition: all .3s linear;
+}
+
+.topbarButtons button h3{
+  float: left;
+  border: none;
+}
+
+.bottomline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.057);
+  bottom: 0;
+}
+
+.loginBox {
+ position: relative;
+ background-color: rgb(0, 0, 0); 
+ color: black;
+ width: 400px;
+ height: 600px;
+ border-radius: 50px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ box-shadow: rgba(175, 114, 0, 0.826) 15px 15px 30px 10px;
+ border-style: double;
+}
+
+.loginBox input {
+  width: 160px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.loginBox label {
+  font-family:'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 25px;
+  color: rgba(255, 166, 0, 0.878);
+}
+
+.movieHub {
+  position: absolute;
+  color: rgb(255, 149, 0);
+  top: 50px;
+  margin: 30px;
+  font-size: 20px;
+  font-family:'Times New Roman', Times, serif; 
+}
+
+.register {
+  position: absolute;
+  color: rgb(255, 149, 0);
+  bottom: 20px;
+  margin: 10px;
+  font-size: 15px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginInfo {
+  position: absolute;
+  color: rgb(255, 149, 0);
+  bottom: 80px;
+  margin: 10px;
+  font-size: 15px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-container {
+  
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 95%;
+}
+
+.user-info {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  border: 1px solid #ddd;
+  
+  
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info h2 {
+  margin-bottom: 20px;
+}
+
+.user-info > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.user-container label {
+  flex-basis: 30%; /* Adjust as needed */
+  margin-top: 10px;
+  color: rgb(255, 149, 00);
+}
+
+.user-container input,
+.user-container textarea {
+  flex-basis: 55%; /* Adjust as needed */
+  width: 70%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.user-info img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.user-container button {
+  margin-top: 10px;
+  background-color: rgb(255, 149, 00);
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.user-info button:hover {
+  background-color: rgb(255, 149, 00);
+}
+
+.footer-container {
+  color:rgb(255, 149, 00);
+  position:fixed;left:0;bottom:0;width:100%;
+}
+.info-flex {
+  width:100%;
+  display: flex;
+  text-align: center;
+}
+.info {
+flex:1;
+  border: 1px solid #ddd;
+  width:200px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+.you {
+  flex:1;
+  text-align: center;
+  border: 1px solid #ddd;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
