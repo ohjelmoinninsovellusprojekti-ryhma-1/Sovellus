@@ -3,12 +3,13 @@ import '../App.css';
 import TopBar from '../components/topbar.js';
 import Footer from '../components/footer.js';
 
+
 export const User = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const [userData, setUserData] = useState({
-    name: 'Björn Nakilla',
-    email: 'nakilla.bjorn@hallonbotar.se',
+    name: 'perse silmä',
+    email: 'olaf.svensson@hallonbotar.se',
     birthdate: '1990-01-01',
     phoneNumber: '123-456-7890',
     address: 'Snusgatan 789, Snus, Jättebra',
@@ -55,76 +56,94 @@ export const User = () => {
     <>
 
     <div className="user-container"> 
-        <div className="user-info"> 
-            <h2>{isEditing ? 'Edit Your Profile' : 'Your Profile'}</h2>
 
+            <h2>{isEditing ? 'Edit Your Profile' : 'Your Profile'}</h2>
+<div className="info-flex">
+  <div className="info">
         <div>
           <label>Name:</label>
+          </div>
           <input
             type="text"
             value={userData.name}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'name')}
           />
-        </div>
+        
 
         <div>
           <label>Email:</label>
+          </div>
           <input
             type="text"
             value={userData.email}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'email')}
           />
-        </div>
+        
 
         <div>
           <label>Birthdate:</label>
+          </div>
           <input
             type="text"
             value={userData.birthdate}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'birthdate')}
           />
-        </div>
+
 
         <div>
           <label>Phone Number:</label>
+          </div>
           <input
             type="text"
             value={userData.phoneNumber}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'phoneNumber')}
           />
-        </div>
+
 
         <div>
           <label>Address:</label>
+          </div>
           <input
             type="text"
             value={userData.address}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'address')}
           />
-        </div>
+
 
         <div>
           <label>Pronouns:</label>
+          </div>
           <input
             type="text"
             value={userData.pronouns}
             readOnly={!isEditing}
             onChange={(e) => handleInputChange(e, 'pronouns')}
           />
+<div>
+        {/* Edit and Save buttons */}
+        {isEditing ? (
+          <button type="button" onClick={handleSaveClick}>
+            Save
+          </button>
+        ) : (
+          <button type="button" onClick={handleEditClick}>
+            Edit information
+          </button>
+        )}
         </div>
-
+        </div>
         {/* Add similar input fields for other user details */}
         {/* ... */}
 
         {/* Profile Picture */}
-        <div>
-          <label>You:</label>
-          <img src={userData.profilePicture} alt="Profile" />
+        <div className="you">
+          <label>Profile picture:</label>
+          <img src={userData.profilePicture} alt="" />
           {isEditing && (
             <>
               <input
@@ -138,7 +157,8 @@ export const User = () => {
             </>
           )}
         </div>
-
+        </div>
+        <div className="user-info"> 
         {/* Friends List */}
         <div>
           <label>Friends:</label>
@@ -194,20 +214,11 @@ export const User = () => {
           </button>
         </div>
 
-        {/* Edit and Save buttons */}
-        {isEditing ? (
-          <button type="button" onClick={handleSaveClick}>
-            Save
-          </button>
-        ) : (
-          <button type="button" onClick={handleEditClick}>
-            Edit Info
-          </button>
-        )}
+        
       </div>
     </div>
     
-    {/* TopBar component */}
+    {/* TopBar/Footer component */}
     <TopBar />
     <Footer />
     </>
