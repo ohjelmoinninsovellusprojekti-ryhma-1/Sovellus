@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Popup from '../components/Popup.js';
 import '../App.css';
 import TopBar from '../components/topbar.js';
 import Footer from '../components/footer.js';
@@ -6,8 +8,13 @@ import Footer from '../components/footer.js';
 
 export const User = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [showFriendsPopup, setShowFriendsPopup] = useState(false);
+  const [showGroupsPopup, setShowGroupsPopup] = useState(false);
+  const [showFavoritesPopup, setShowFavoritesPopup] = useState(false);
 
   const [userData, setUserData] = useState({
+    id: 1,
+    username: 'käyttäjänimi', // Tämä on käyttäjänimi, ei nimi!!!
     name: 'perse silmä',
     email: 'olaf.svensson@hallonbotar.se',
     birthdate: '1990-01-01',
@@ -16,12 +23,15 @@ export const User = () => {
     pronouns: 'They/Them',
     profilePicture: 'path/to/profile-picture.jpg',
     friends: ['Friend 1', 'Friend 2', 'Friend 3'],
-    bestFriends: ['Bestie 1', 'Bestie 2', 'Bestie 3'],
     groups: ['Group 1', 'Group 2', 'Group 3'],
-    favoriteMovies: ['Movie 1', 'Movie 2', 'Movie 3'],
-    favoriteSeries: ['Series 1', 'Series 2', 'Series 3'],
+    favorites: ['Favorite 1', 'Favorite 2', 'Favorite 3'],
   });
- 
+
+
+const handleClosePopup = (setPopupState) => {
+  setPopupState(false);
+};
+
   useEffect(() => {
     console.log('isEditing:', isEditing);
   }, [isEditing]);
@@ -34,6 +44,7 @@ export const User = () => {
     console.log('Save button clicked');
     const updatedUserData = {
       id: userData.id,
+      username: userData.username,
       name: userData.name,
       email: userData.email,
       birthdate: userData.birthdate,
@@ -79,15 +90,73 @@ export const User = () => {
         reader.readAsDataURL(file);
       }
   };
+  const handleChangeUsername = async () => {
+    const newUsername = prompt('Enter new username:');
+    if (newUsername) {
+      const updatedUserData = {
+        ...userData,
+        name: newUsername,
+      };
 
+      const response = await fetch('http://localhost:3000/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedUserData),
+      });
+
+      if (response.ok) {
+        const updatedUser = await response.json();
+        setUserData(updatedUser);
+      } else {
+        console.error('Failed to update username');
+      }
+    }
+  };
+
+  const handleChangePassword = async () => {
+    const newPassword = prompt('Enter new password:');
+    if (newPassword) {
+      // Tässä voit toteuttaa tarvittavat toimenpiteet salasanan vaihtamiseksi
+      // Käytä turvallisia salasanan tallennusmenetelmiä, kuten bcrypt
+      console.log('New password:', newPassword);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    const confirmation = window.confirm('Are you sure you want to delete your account?');
+    if (confirmation) {
+      const response = await fetch(`http://localhost:3000/user/${userData.id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        // Voit suorittaa lisätoimenpiteitä tarvittaessa
+        console.log('Account and data deleted successfully');
+      } else {
+        console.error('Failed to delete account, please try again');
+      }
+    }
+  };
   return (
     <>
 
-    <div className="user-container"> 
+ <div className="user-container"> 
 
             <h2>{isEditing ? 'Edit Your Profile' : 'Your Profile'}</h2>
 <div className="info-flex">
   <div className="info">
+
+        <div>
+          <label>Username:</label>
+          </div>
+          <input
+          type="text"
+          value={userData.username}
+          readOnly={!isEditing}
+          onChange={(e) => handleInputChange(e, 'username')}
+        />
         <div>
           <label>Name:</label>
           </div>
@@ -144,14 +213,23 @@ export const User = () => {
 
 
         <div>
-          <label>Pronouns:</label>
-          </div>
-          <input
-            type="text"
-            value={userData.pronouns}
-            readOnly={!isEditing}
-            onChange={(e) => handleInputChange(e, 'pronouns')}
-          />
+        <label>Pronouns:</label>
+      </div>
+      {isEditing ? (
+        <select
+          value={userData.pronouns}
+          onChange={(e) => handleInputChange(e, 'pronouns')}
+          style={{ width: '200px', fontSize: '16px' }}
+        >
+        <option value="She/Her">She/Her</option>
+        <option value="He/His">He/His</option>
+        <option value="They/Them">They/Them</option>
+        <option value="Other">Other</option>
+      
+      </select>
+    ) : (
+      <span>{userData.pronouns}</span>
+  )}
 <div>
         {/* Edit and Save buttons */}
         {isEditing ? (
@@ -187,66 +265,82 @@ export const User = () => {
         </div>
         </div>
         <div className="user-info"> 
-        {/* Friends List */}
-        <div>
+             {/* Friends List */}
+             <div>
           <label>Friends:</label>
-          {userData.friends.map((friend, index) => (
-            <div key={index}>{friend}</div>
-          ))}
-          <button type="button" onClick={() => console.log('Expand Friends')}>
+          {/* ... */}
+          <button type="button" onClick={() => setShowFriendsPopup(true)}>
             Show more
           </button>
+          <Popup
+            title="Friends"
+            showPopup={showFriendsPopup}
+            onClose={() => handleClosePopup(setShowFriendsPopup)}
+            fetchFunction={() => 'http://localhost:3000/friends'} // Vaihda oikea polku
+            renderItem={(friend) => (
+              <span key={friend}>{friend}</span>
+            )}
+         />
         </div>
 
-        {/* Best Friends */}
-        <div>
-          <label>Best Friends:</label>
-          {userData.bestFriends.map((bestie, index) => (
-            <div key={index}>{bestie}</div>
-          ))}
-          <button type="button" onClick={() => console.log('Expand Best Friends')}>
-            Show more
-          </button>
-        </div>
-
-        {/*Groups */}
+        {/* Groups List */}
         <div>
           <label>Groups:</label>
-          {userData.groups.map((group, index) => (
-            <div key={index}>{group}</div>
-          ))}
-          <button type="button" onClick={() => console.log('Expand Groups')}>
+          {/* ... */}
+          <button type="button" onClick={() => setShowGroupsPopup(true)}>
             Show more
           </button>
+          <Popup
+            title="Groups"
+            showPopup={showGroupsPopup}
+            onClose={() => handleClosePopup(setShowGroupsPopup)}
+            fetchFunction={() => 'http://localhost:3000/groups'} // Vaihda oikea polku
+            renderItem={(group) => (
+              <span key={group}>{group}</span>
+            )}
+          />
         </div>
 
-        {/* Favorite Movies */}
+        {/* Favorites List */}
         <div>
-          <label>Favorite Movies:</label>
-          {userData.favoriteMovies.map((movie, index) => (
-            <div key={index}>{movie}</div>
-          ))}
-          <button type="button" onClick={() => console.log('Expand Favorite Movies')}>
+          <label>My Favorites:</label>
+          {/* ... */}
+          <button type="button" onClick={() => setShowFavoritesPopup(true)}>
             Show more
           </button>
+          <Popup
+            title="My Favorites"
+            showPopup={showFavoritesPopup}
+            onClose={() => handleClosePopup(setShowFavoritesPopup)}
+            fetchFunction={() => 'http://localhost:3000/favorites'} // Vaihda oikea polku
+            renderItem={(favorite) => (
+              <span key={favorite}>{favorite}</span>
+            )}
+          />
         </div>
 
-        {/* Favorite Series */}
-        <div>
-          <label>Favorite Series:</label>
-          {userData.favoriteSeries.map((series, index) => (
-            <div key={index}>{series}</div>
-          ))}
-          <button type="button" onClick={() => console.log('Expand Favorite Series')}>
-            Show more
-          </button>
-        </div>
-
-        
+        {/* Account Managment */}
       </div>
-    </div>
+        <div className="account-container">
+         <div className="account-header">
+          <label>Account Managment</label>
+        </div>
+        <div className="account">
+            <button type="button" onClick={handleChangeUsername}>
+              Change Username
+            </button>
+            <button type="button" onClick={handleChangePassword}>
+              Change Password
+            </button>
+            <button type="button" onClick={handleDeleteAccount}>
+              Delete Account
+            </button>
+          </div>
+        </div>
+      </div>
     
-    {/* TopBar/Footer component */}
+    
+{/* TopBar/Footer component */}
     <TopBar />
     <Footer />
     </>

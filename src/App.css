@@ -155,6 +155,7 @@
   color: white;
   text-align: center;
   border: 1px solid #ddd;
+  border-radius: 8px;
   
   
   margin-top: 50px;
@@ -185,6 +186,7 @@
 .user-container textarea {
   flex-basis: 55%; /* Adjust as needed */
   width: 70%;
+  border-radius: 4px;
   padding: 8px;
   margin-top: 5px;
 }
@@ -221,6 +223,7 @@
 .info {
 flex:1;
   border: 1px solid #ddd;
+  border-radius: 8px;
   width:200px;
   margin-right: 25px;
   margin-bottom: 20px;
@@ -230,6 +233,7 @@ flex:1;
   flex:1;
   text-align: center;
   border: 1px solid #ddd;
+  border-radius: 8px;
   margin-left: 25px;
   margin-bottom: 20px;
   padding: 20px 0 20px 0;
@@ -257,4 +261,71 @@ flex:1;
   margin: 0;
   padding: 0;
   background-color: black;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgb(0, 0, 0);
+  color: #f59e0b;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.show {
+  display: block;
+}
+.account-container {
+  background-color: black;
+  color: rgb(255, 149, 0);
+  text-align: center;
+  margin-top: 50px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 30px 20px;
+}
+
+.account-header {
+  margin-bottom: 10px;
+}
+
+.account {
+  margin-top: 10px;
+}
+
+.account button {
+  margin: 5px;
+  background-color: rgb(255, 149, 0);
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account button:hover {
+  background-color: rgb(255, 149, 0);
 }
