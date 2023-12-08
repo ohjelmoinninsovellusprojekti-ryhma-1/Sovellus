@@ -238,30 +238,6 @@ flex:1;
   margin-bottom: 20px;
   padding: 20px 0 20px 0;
 }
-.friends {
-  text-align: center;
-}
-
-.friends-header {
-  background-color: #000000;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 10%;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.friends-link {
-  color: #61dafb;
-}
-
-.friendsBody {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-}
 
 .popup {
   display: none;
