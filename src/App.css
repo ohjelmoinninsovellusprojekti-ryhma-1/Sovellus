@@ -1,23 +1,15 @@
 body {
-  margin: 0;
+  margin: 0 auto;
+  background-color: #000000;
+  width: 100%;
 }
 
 .App {
   text-align: center;
-  background-color: #000000;
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
 }
 
 .homeBody {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   background-color: black;
 }
@@ -29,6 +21,7 @@ body {
   width: 100%;
   height: 150px;
   background-color: rgb(0, 0, 0);
+  z-index: 1;
 }
 
 #topbarBackground h1 {
@@ -52,7 +45,7 @@ body {
   height: 100%;
   width: 100%;
   bottom: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .topbarButtons button{
@@ -107,13 +100,15 @@ body {
  box-shadow: rgba(175, 114, 0, 0.826) 15px 15px 30px 10px;
  margin: 50px;
  top: 120px;
- left: 40%;
+ left: 50%;
+ transform: translateX(-50%);
 }
+
 
 .loginBox input {
   width: 160px;
   height: 25px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -134,7 +129,7 @@ body {
   font-family:'Times New Roman', Times, serif; 
 }
 
-.loginBox .register {
+.loginBox #register {
   position: absolute;
   color: rgb(255, 149, 0);
   bottom: 20px;
@@ -171,13 +166,13 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.registerBox Button {
+.registerBox #log {
   background-color: #000000;
   color: rgb(255, 149, 0);
   margin: 20px;
   position: absolute;
-  bottom: 50px;
-  width: 85px;
+  bottom: 20px;
+  width: 150px;
   height: 40px;
   border: none;
 }
@@ -193,5 +188,110 @@ body {
 .registerBox select {
   width: 160px;
   height: 25px;
+
+}
+
+.registerDone {
+  background-color: #000000;
+  color: rgb(255, 149, 0);
+  margin: 20px;
+  position: absolute;
+  bottom: 70px;
+  width: 100px;
+  height: 40px;
+}
+
+.movie-card-container1 {
+  display: flex;
+  flex-wrap: wrap;
+  top: 250px;
+  position: absolute;
+}
+
+.card-container1 {
+  margin: 65px;
+}
+
+
+.card-img-container1 img{
+  width: 250px;
+
+}
+
+.topbarinfo {
+  position: absolute;
+  top: 250px;
+  color: rgb(255, 149, 0);
+  font-size: 26px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 80px;
+}
+
+.randomBox {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 10px;
+  padding: 20px;
+  background: none;
+}
+
+.randomButtonMovie {
+  background-color: #000000;
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: rgba(175, 114, 0, 0.826) 10px 10px 20px 5px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+  color: rgba(255, 149, 0, 0.883);
+  font-size: 17px;
+}
+
+.randomMovie{
+  color: rgba(255, 149, 0, 0.901);
+  top: 0;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.randomButtonMovie:hover {
+transform: translateY(3px);
+box-shadow: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .registerBox, .loginBox {
+    width: 80%;
+    left: 10%;
+    margin: 20px;
+  }
+
+  .loginButton {
+  width: 70%;
+  left: 15%;
+  position: absolute;
+  }
+
+  .randomBox {
+    top: 100%;
+    padding: 10px;
+  }
+
+  .randomButtonMovie {
+    font-size: 10px;
+  }
+
+  .movie-card-container1 {
+    top: 350px;
+  }
+
+  .card-container1 {
+    margin: 40px;
+  }
+  .randomButtonMovie {
+    font-size: 12px;
+  }
 
 }
