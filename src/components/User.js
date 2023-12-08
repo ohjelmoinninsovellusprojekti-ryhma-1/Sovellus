@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import TopBar from '../components/topbar.js';
 import Footer from '../components/footer.js';
@@ -21,14 +21,42 @@ export const User = () => {
     favoriteMovies: ['Movie 1', 'Movie 2', 'Movie 3'],
     favoriteSeries: ['Series 1', 'Series 2', 'Series 3'],
   });
+ 
+  useEffect(() => {
+    console.log('isEditing:', isEditing);
+  }, [isEditing]);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
-
-  const handleSaveClick = () => {
-    // Implement logic to save user modifications (send to server or update state)
-    setIsEditing(false);
+  
+  const handleSaveClick = async () => {
+    console.log('Save button clicked');
+    const updatedUserData = {
+      id: userData.id,
+      name: userData.name,
+      email: userData.email,
+      birthdate: userData.birthdate,
+      phoneNumber: userData.phoneNumber,
+      address: userData.address,
+      pronouns: userData.pronouns
+    };
+  
+    const response = await fetch('http://localhost:3000/user', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedUserData)
+    });
+  
+    if (response.ok) {
+      const updatedUser = await response.json();
+      setUserData(updatedUser);
+      setIsEditing(false);
+    } else {
+      console.error('Failed to update user');
+    }
   };
 
   const handleInputChange = (e, field) => {
