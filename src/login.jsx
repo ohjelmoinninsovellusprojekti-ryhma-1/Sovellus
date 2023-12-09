@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const Login = (props) => {
-    const [email, setEmail] = useState ('');
+    const [username, setUsername] = useState ('');
     const [password, setPassword] = useState ('');
     const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export const Login = (props) => {
         handleButton();
     }
 
-    const handleButton = () => {
+    const handleButton = () => { 
         navigate('./register')
     }
 
@@ -20,7 +20,7 @@ export const Login = (props) => {
         e.preventDefault();
 
         const loginData = {
-            email,
+            username,
             password,
         };
 
@@ -50,8 +50,8 @@ export const Login = (props) => {
             </div>
             <>
             <form onSubmit = {handleSubmit} action="/login" method="POST">
-                <label htmlFor="email">Email:</label>
-                <input value = {email} onChange={(e) => setEmail(e.target.value)} type= "email" placeholder="youremail@gmail.com" id="email" name ="email"/>
+                <label htmlFor="username">Username:</label>
+                <input value = {username} onChange={(e) => setUsername(e.target.value)} type= "username" placeholder="username" id="username" name ="username"/>
                 <br />
                 <label htmlFor="password">Password: </label>
                 <input value = {password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="*********" id="password" name ="password"/>    
