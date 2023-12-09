@@ -4,6 +4,7 @@ import HomePage from './components/homepage.js';
 import Login from "./components/login.js";
 import { Register } from "./register.jsx";
 import User from './components/User.js';
+import Groups from './components/Groups.js';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path ="/" element = { <Login />} />
           <Route path ="/home" element = { <HomePage />} />
           <Route path ="/user" element = { <User />} />
+          <Route path ="/groups" element = { <Groups />} />
         </Routes>
       </Router>
     </header>

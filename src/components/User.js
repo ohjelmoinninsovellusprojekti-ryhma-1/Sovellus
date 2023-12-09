@@ -14,7 +14,7 @@ export const User = () => {
 
   const [userData, setUserData] = useState({
     id: 1,
-    username: 'käyttäjänimi', // Tämä on käyttäjänimi, ei nimi!!!
+    username: 'user_id', // Tämä on käyttäjänimi, ei nimi!!!
     name: 'perse silmä',
     email: 'olaf.svensson@hallonbotar.se',
     birthdate: '1990-01-01',
@@ -53,8 +53,9 @@ const handleClosePopup = (setPopupState) => {
       pronouns: userData.pronouns
     };
   
-    const response = await fetch('http://localhost:3000/user', {
+    const response = await fetch(`http://localhost:3000/user/${userData.id}`, {
       method: 'PUT',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -118,8 +119,8 @@ const handleClosePopup = (setPopupState) => {
   const handleChangePassword = async () => {
     const newPassword = prompt('Enter new password:');
     if (newPassword) {
-      // Tässä voit toteuttaa tarvittavat toimenpiteet salasanan vaihtamiseksi
-      // Käytä turvallisia salasanan tallennusmenetelmiä, kuten bcrypt
+      // Tässä voidaanpi toteuttaa tarvittavat toimenpiteet salasanan vaihtamiseksi!!
+      // Käytetään turvallisia salasanan tallennusmenetelmiä, kuten bcryptiä!!
       console.log('New password:', newPassword);
     }
   };
@@ -132,7 +133,7 @@ const handleClosePopup = (setPopupState) => {
       });
 
       if (response.ok) {
-        // Voit suorittaa lisätoimenpiteitä tarvittaessa
+        // Voidaan suorittaapi lisätoimenpiteitä tarvittaessa!!
         console.log('Account and data deleted successfully');
       } else {
         console.error('Failed to delete account, please try again');
@@ -148,16 +149,11 @@ const handleClosePopup = (setPopupState) => {
 <div className="info-flex">
   <div className="info">
 
-        <div>
-          <label>Username:</label>
-          </div>
-          <input
-          type="text"
-          value={userData.username}
-          readOnly={!isEditing}
-          onChange={(e) => handleInputChange(e, 'username')}
-        />
-        <div>
+          <div>
+              <label>Username:</label>
+            </div>
+            <div>{userData.username}</div>
+            <div>
           <label>Name:</label>
           </div>
           <input
@@ -243,7 +239,7 @@ const handleClosePopup = (setPopupState) => {
         )}
         </div>
         </div>
-        {/* Add similar input fields for other user details */}
+        {/* Tähän voipi lisätä kamaa jos tuntuu siltä */}
         {/* ... */}
 
         {/* Profile Picture */}
@@ -276,7 +272,7 @@ const handleClosePopup = (setPopupState) => {
             title="Friends"
             showPopup={showFriendsPopup}
             onClose={() => handleClosePopup(setShowFriendsPopup)}
-            fetchFunction={() => 'http://localhost:3000/friends'} // Vaihda oikea polku
+            fetchFunction={() => 'http://localhost:3000/friends'} // HÖÖ Vaihda oikea polku!!
             renderItem={(friend) => (
               <span key={friend}>{friend}</span>
             )}
@@ -294,7 +290,7 @@ const handleClosePopup = (setPopupState) => {
             title="Groups"
             showPopup={showGroupsPopup}
             onClose={() => handleClosePopup(setShowGroupsPopup)}
-            fetchFunction={() => 'http://localhost:3000/groups'} // Vaihda oikea polku
+            fetchFunction={() => 'http://localhost:3000/groups'} // HÖÖ Vaihda oikea polku!!
             renderItem={(group) => (
               <span key={group}>{group}</span>
             )}
@@ -312,7 +308,7 @@ const handleClosePopup = (setPopupState) => {
             title="My Favorites"
             showPopup={showFavoritesPopup}
             onClose={() => handleClosePopup(setShowFavoritesPopup)}
-            fetchFunction={() => 'http://localhost:3000/favorites'} // Vaihda oikea polku
+            fetchFunction={() => 'http://localhost:3000/favorites'} // HÖÖ Vaihda oikea polku!!
             renderItem={(favorite) => (
               <span key={favorite}>{favorite}</span>
             )}
