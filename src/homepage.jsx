@@ -14,7 +14,7 @@ function myFunction () {
     lightmodeElement.classList.toggle('lightmode');
 }
 
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var button = document.getElementById('lightmode');
 
     button.addEventListener('click', function () {
@@ -31,7 +31,7 @@ function myFunction () {
             console.log('ei toimi');
         }
     }
-});*/
+});
 
     const getTopRatedMovies = async () => {
         try {
@@ -47,12 +47,14 @@ function myFunction () {
     };
 
 function handleRandomMovie() {
-    var popup = document.getElementById('popup');
-    popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    setRandomMovie(movies[randomIndex]);
+    closePop();
 };
 
 const closePop = () => {
-    document.getElementById('popup').style.display = 'none';
+    var popup = document.getElementById('popup');
+    popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
   };
         
     useEffect(() => {
@@ -62,33 +64,50 @@ const closePop = () => {
  
 return (
     <div>
-        <TopBar />
+    <TopBar />
     <div className="lightmode">
-        <button className = "buttonlight" onClick = {myFunction}> Lightmode </button>
+      <button className="buttonlight" onClick={myFunction}>
+        Lightmode
+      </button>
     </div>
     <div className="topbarinfo">TOP 5 MOVIES</div>
     <div className="movie-card-container1">
-        {movies.slice(0 , 5).map((movie, index) => (
-          <div key={index} className="card-container1">
-            <div className="card-img-container1">
-              {movie.poster_path && (
-                <img className="card-img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster"/>
+      {movies.slice(0, 5).map((movie, index) => (
+        <div key={index} className="card-container1">
+          <div className="card-img-container1">
+            {movie.poster_path && (
+              <img
+                className="card-img1"
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt="movie-poster"
+              />
             )}
-            </div>
         </div>
-        ))}
-          <div id="popup" className = "popup">
-                        <div className="popUp-content">
-                     <span class="close" id="popUpClose" onClick={closePop}>&times;</span>
-                 </div>
-            </div>
-        <div className="randomBox">
-            <div className="randomMovie">Don't know what to watch?
-            </div>
-            <button className="randomButtonMovie" onClick={handleRandomMovie}><h1>Click here and get random movie to watch</h1></button>
         </div>
+    ))}
+      <div id="popup" className="popup">
+        <div className="popUp-content">
+          <span className="close" id="popUpClose" onClick={closePop}>&times;</span>
+          {randomMovie && (
+            <div>
+            <h2>{randomMovie.title}</h2>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${randomMovie.poster_path}`}
+                alt="movie-poster"
+              />
+            </div>
+        )}
+        </div>
+       </div>
+       <div className="randomBox">
+        <div className="randomMovie">Don't know what to watch?</div>
+        <button className="randomButtonMovie" onClick={handleRandomMovie}>
+          <h1>Click for random movie</h1>
+        </button>
       </div>
-</div>
-)};
+    </div>
+  </div>
+);
+};
 
 export default HomePage;

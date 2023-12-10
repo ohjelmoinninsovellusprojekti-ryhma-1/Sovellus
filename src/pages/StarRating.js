@@ -1,9 +1,10 @@
-/*import React, { useState } from 'react';
+
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as farStar, faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const StarRating = ({ userId, movie }) => { // Pass userId as a prop
+const StarRating = ({ userId, movie, username }) => { // Pass userId as a prop
   const [rating, setRating] = useState(0);
   const [hasRated, setHasRated] = useState(false);
 
@@ -16,17 +17,11 @@ const StarRating = ({ userId, movie }) => { // Pass userId as a prop
   const sendRatingToDatabase = async (value) => {
     try {
 
-        console.log('movie_reviews?:', {
-            userId: userId,
-            movieId: movie.id,
-            ratings: value,
-           
-          });
-
       const response = await axios.post('http://localhost:5000/api/add-rating', {
         userId: userId, 
         movieId: movie.id, 
         rating: value,
+        username: username
       });
       
 
@@ -39,6 +34,7 @@ const StarRating = ({ userId, movie }) => { // Pass userId as a prop
       console.error('Error sending rating to the database', error);
     }
   };
+  
 
   return (
     <div className="star-rating">
@@ -56,4 +52,4 @@ const StarRating = ({ userId, movie }) => { // Pass userId as a prop
 };
 
 export default StarRating;
-*/
+

@@ -1,13 +1,23 @@
-/*import React, { useState } from 'react';
+
+import React, { useState } from 'react';
 import './popular.css';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import StarRating from './StarRating';
+import ReviewPopup from './reviewPopUp';
 
 
-const TvCard = ({ movie, userId }) => {
+const TvCard = ({ movie, userId, username }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const handleAddReviewClick = () => {
+    setPopupVisible(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupVisible(false);
+  };
 
 
   const handleAddToFavorites = async () => {
@@ -19,6 +29,7 @@ const TvCard = ({ movie, userId }) => {
         movieId: movie.id,
         title: movie.title || movie.name,
         releaseYear: movie.release_date || movie.first_air_date,
+        username: username,
       });
      
 
@@ -27,6 +38,7 @@ const TvCard = ({ movie, userId }) => {
         movieId: movie.id,
         title: movie.title || movie.name,
         releaseYear: movie.release_date || movie.first_air_date,
+        username: username,
       });
       if (response.data.success) {
         setIsFavorite(true);
@@ -65,11 +77,17 @@ const TvCard = ({ movie, userId }) => {
           {isFavorite ? ' Yay!' : 'Love this?'}
         </button>
         <div className="star">
-      <StarRating userId={userId} movie={movie} />
+      <StarRating userId={userId} movie={movie} username={username}/>
     </div>
+    <button className="reviewBtn" onClick={handleAddReviewClick}>
+        Add a more in detail review!
+      </button>
+
+      {isPopupVisible && <ReviewPopup onClose={handleClosePopup} movie={movie} username={username} userId={userId} />}
+     
       </div>
     </div>
   );
 };
 
-export default TvCard;*/
+export default TvCard;

@@ -8,7 +8,7 @@ const NavigationButtons = ({ isMovies }) => {
     { icon: faStar, to: isMovies ? '/top-rated-movies' : '/top-rated-tv', label: '' },
     { icon: faFilm, to: isMovies ? '/popular-movies' : '/popular-tv', label: '' },
     { icon: faTv, to: isMovies ? '/upcoming-movies' : '/trending-tv', label: '' },
-    { icon: faPlay, to: isMovies ? '/now-playing-movies' : '/genre-tv', label: '' },
+    { icon: faPlay, to: isMovies ? '/news' : '/news', label: '' },
   ];
 
   return (
@@ -25,5 +25,7 @@ const NavigationButtons = ({ isMovies }) => {
 };
 
 export default NavigationButtons;
+
+
 
 

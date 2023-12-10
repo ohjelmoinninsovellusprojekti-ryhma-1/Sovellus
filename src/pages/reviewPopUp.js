@@ -1,10 +1,11 @@
-/*import React, { useState } from 'react';
+
+import React, { useState } from 'react';
 import axios from 'axios'; 
 import './ReviewPopup.css';
+import ReviewBrowser from './reviewspage'; 
 
-
-const ReviewPopup = ({ onClose, movie, username }) => {
-    console.log('ReviewPopup props:', { onClose, movie, username });
+const ReviewPopup = ({ onClose, movie, username, userId }) => {
+    console.log('ReviewPopup props:', { onClose, movie, username, userId });
     const [reviewText, setReviewText] = useState('');
   
     const handleSaveReview = async () => {
@@ -14,19 +15,20 @@ const ReviewPopup = ({ onClose, movie, username }) => {
             username: username,
             movieId: movie.id,
             reviewText: reviewText,
-            
-           
+            userId: userId
+              
           });
         
       const response = await axios.post('http://localhost:5000/api/add-a-review', {
         movieId: movie.id,
         reviewText: reviewText,
-        username: username
+        username: username,
+        userId: userId
       });
 
       if (response.data.success) {
         console.log('Review saved successfully');
-        onClose();
+        onClose(reviewText);
       } else {
         console.error('Failed to save the review');
       }
@@ -40,7 +42,7 @@ const ReviewPopup = ({ onClose, movie, username }) => {
       <div className="popup-content">
         <span className="close" onClick={onClose}>&times;</span>
         <textarea
-          placeholder="Write your detailed review here..."
+          placeholder="Write your review here, max 1000 characters!..."
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
         />
@@ -51,4 +53,4 @@ const ReviewPopup = ({ onClose, movie, username }) => {
 };
 
 export default ReviewPopup;
-*/
+

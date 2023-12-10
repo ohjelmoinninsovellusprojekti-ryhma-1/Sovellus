@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-//import { PopularCard } from '../pages/popular.jsx';
-import PopularCard from '../pages/popular.jsx';
-import './popular.css';
+import TvCard from '../pages/tvcard.jsx';
 
-  const PopularTv = ({ userId }) => {
+
+const PopularTv = ({ userId, username }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchFilter, setSearchFilter] = useState("movie");
   const [movies, setMovies] = useState([]);
@@ -96,7 +95,7 @@ import './popular.css';
       </div>
       <div className="movie-card-container">
         {movies.map((movie, index) => (
-          <PopularCard key={index} movie={movie} userId={userId} />
+          <TvCard key={index} movie={movie} userId={userId} username={username}  />
         ))}
       </div>
     </div>

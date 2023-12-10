@@ -1,6 +1,5 @@
 import React from 'react';
 import './contactUs.css'; 
-import TopBar from './TopBar.js';
 
 const ContactUs = () => {
     const handleSubmit = async (event) => {
@@ -9,8 +8,6 @@ const ContactUs = () => {
   };
 
   return (
-    <div>
-    <TopBar />
     <div className="contact-us-container">
       <h1>Contact Us</h1>
       <div className="contact-form-container">
@@ -33,7 +30,6 @@ const ContactUs = () => {
         <p>Email: esimerkki@example.com</p>
         <p>Phone: +1234567890</p>
       </div>
-    </div>
     </div>
   );
 };

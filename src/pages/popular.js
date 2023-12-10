@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-//import { PopularCard } from '../pages/popular.jsx';
-import PopularCard from '../pages/popular.jsx';
-import './popular.css';
+import MovieCard from '../pages/moviecard.jsx';
 
-const Popular = ({ userId }) => {
+
+const Popular = ({ userId, username }) => {
   
   const [searchTerm, setSearchTerm] = useState("");
   const [searchFilter, setSearchFilter] = useState("movie");
   const [movies, setMovies] = useState([]);
-  const apiKey = '0faf15cab9188a8b67efc636398b904b';
+  const apiKey = 'a676d18cf85d5c37a91f273496a3ffbb';
   const searchUrl = 'https://api.themoviedb.org/3/search/multi';
   const popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
   
@@ -90,6 +89,7 @@ const Popular = ({ userId }) => {
   const getPopularMovies = async () => {
     try {
       console.log('UserId in Popular component:', userId);
+      console.log('Username in Popular component:', username);
       const response = await axios.get(popularMoviesUrl, {
         params: {
           api_key: apiKey,
@@ -135,7 +135,7 @@ const Popular = ({ userId }) => {
       </div>
       <div className="movie-card-container">
         {movies.map((movie, index) => (
-          <PopularCard key={index} movie={movie} userId={userId} />
+          <MovieCard key={index} movie={movie} userId={userId} username={username}  />
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-/*
+
 import React, { useState } from 'react';
 import './popular.css';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import StarRating from './StarRating';
 import ReviewPopup from './reviewPopUp';
-
 
 const MovieCard = ({ movie, userId, username}) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -76,19 +75,21 @@ const MovieCard = ({ movie, userId, username}) => {
           {isFavorite ? ' Yay!' : 'Love this?'}
         </button>
         <div className="star">
-      <StarRating userId={userId} movie={movie} />
+      <StarRating userId={userId} movie={movie} username={username} />
     </div>
     <button className="reviewBtn" onClick={handleAddReviewClick}>
         Add a more in detail review!
       </button>
 
-      {isPopupVisible && <ReviewPopup onClose={handleClosePopup} movie={movie} username={username} />}
+      {isPopupVisible && <ReviewPopup onClose={handleClosePopup} movie={movie} username={username} userId={userId} />}
+      
+     </div>
     </div>
-      </div>
-    
   );
 };
 
 export default MovieCard;
 
-*/
+
+
+

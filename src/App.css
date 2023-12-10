@@ -55,6 +55,9 @@ body {
   color: white;
   background: none;
   border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .topbarButtons button:hover {
@@ -104,12 +107,11 @@ body {
   bottom: 0;
 }
 
+.registerCont,
 .loginCont {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .registerBox,
@@ -124,12 +126,10 @@ body {
  align-items: center;
  justify-content: center;
  box-shadow: rgba(175, 114, 0, 0.826) 15px 15px 30px 10px;
- margin: 50px;
- top: 120px;
+ top: 50%;
  left: 50%;
  transform: translateX(-50%);
 }
-
 
 .loginBox input {
   width: 160px;
@@ -146,13 +146,15 @@ body {
   color: rgba(255, 166, 0, 0.878);
 }
 
-.movieHub {
+.movieHub h1{
   position: absolute;
   color: rgb(255, 149, 0);
   top: 50px;
-  margin: 30px;
-  font-size: 20px;
+  font-size: 45px;
   font-family:'Times New Roman', Times, serif; 
+  left: 50%;
+  transform: translateX(-50%); 
+
 }
 
 .loginBox #register {
@@ -166,13 +168,22 @@ body {
   border: none;
 }
 
-.loginBox .loginInfo {
+.loginBox .loginInfo{
   position: absolute;
-  color: rgb(255, 149, 0);
   bottom: 80px;
   margin: 10px;
-  font-size: 15px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+}
+
+
+.loginInfo button {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  color: rgb(255, 149, 0);
+  border: none;
+  font-size: 15px; 
 }
 
 .loginBox .logInButton {
@@ -214,17 +225,25 @@ body {
 .registerBox select {
   width: 160px;
   height: 25px;
-
 }
 
 .registerDone {
   background-color: #000000;
-  color: rgb(255, 149, 0);
-  margin: 20px;
+  margin: 0px;
   position: absolute;
-  bottom: 70px;
-  width: 100px;
+  bottom: 100px;
+  width: 150px;
   height: 40px;
+  left: 32%;
+  border: double 0.2px;
+  border-color: #f59f0bc5;
+}
+
+.registerDone p {
+  color: rgb(255, 149, 0);
+  margin: 00px;
+  font-size: 15px;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .movie-card-container1 {
@@ -346,6 +365,7 @@ box-shadow: none;
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
 .main{
   display:flex;
   gap: 1rem;
@@ -465,7 +485,7 @@ box-shadow: none;
   color: white;
 }
 
-.popup {
+#popup {
   display: none;
   position: fixed;
   top: 50%;
@@ -474,7 +494,7 @@ box-shadow: none;
   width: 300px;
   height: 500px;
   padding: 20px;
-  background-color: #f59f0be7;
+  background-color: #000000e7;
   border-radius: 20px;
   z-index: 1;
   box-shadow: 15px 15px 15px rgba(251, 133, 36, 0.7);
@@ -484,6 +504,16 @@ box-shadow: none;
   text-align: center;
 }
 
+.popUp-content img {
+ max-width: 90%;
+ height: auto;
+
+}
+
+.popUp-content h2 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
 #popUpClose {
   position: absolute;
   top: 10px;
@@ -491,4 +521,55 @@ box-shadow: none;
   font-size: 20px;
   cursor: pointer;
   color: white;
+}
+
+.main{
+  display:flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+}
+
+.FinnkinoNewsList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.FinnkinoNewsItem {
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  width: 45%; /* Adjust as needed */
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.FinnkinoNewsItem h3 {
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.FinnkinoNewsItem p {
+  margin-bottom: 15px;
+}
+
+.FinnkinoNewsItem a {
+  color: var(--orange);
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.FinnkinoNewsItem img {
+  max-width: 100%; /* Ensure images fit within the container */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+@media only screen and (max-width: 600px) {
+  .FinnkinoNewsItem {
+    width: 90%; /* Adjust as needed for smaller screens */
+  }
 }
