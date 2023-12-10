@@ -15,7 +15,7 @@ export const User = () => {
   const [userData, setUserData] = useState({
     id: 1,
     username: 'user_id', // Tämä on käyttäjänimi, ei nimi!!!
-    name: 'perse silmä',
+    name: 'Olaf Svensson',
     email: 'olaf.svensson@hallonbotar.se',
     birthdate: '1990-01-01',
     phoneNumber: '123-456-7890',

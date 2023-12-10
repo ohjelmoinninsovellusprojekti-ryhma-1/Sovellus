@@ -1,87 +1,96 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Popup from '../components/Popup.js';
 import '../App.css';
 import TopBar from '../components/topbar.js';
 import Footer from '../components/footer.js';
 
-const Groups = () => {
-  const [myGroups, setMyGroups] = useState([]);
-  const [popularGroups, setPopularGroups] = useState([]);
-  const [groupRequests, setGroupRequests] = useState([]);
+export const Groups = () => {
+  const [showMyGroupsPopup, setShowMyGroupsPopup] = useState(false);
+  const [showPopularGroupsPopup, setShowPopularGroupsPopup] = useState(false);
+  const [showAllGroupsPopup, setShowAllGroupsPopup] = useState(false);
 
-  useEffect(() => {
-    const fetchMyGroups = async () => {
-      try {
-        const response = await axios.get('/api/my-groups');
-        setMyGroups(response.data);
-      } catch (error) {
-        console.error('Error fetching My Groups:', error.message);
-      }
-    };
+  const [myGroups, setMyGroups] = useState([
+    { id: 1, name: 'Group 1' },
+    { id: 2, name: 'Group 2' },
+    { id: 3, name: 'Group 3' },
+  ]);
 
-    const fetchPopularGroups = async () => {
-      try {
-        const response = await axios.get('/api/popular-groups');
-        setPopularGroups(response.data);
-      } catch (error) {
-        console.error('Error fetching Popular Groups:', error.message);
-      }
-    };
+  const [popularGroups, setPopularGroups] = useState([
+    { id: 4, name: 'Popular Group 1' },
+    { id: 5, name: 'Popular Group 2' },
+    { id: 6, name: 'Popular Group 3' },
+  ]);
 
-    const fetchGroupRequests = async () => {
-      try {
-        const response = await axios.get('/api/group-requests');
-        setGroupRequests(response.data);
-      } catch (error) {
-        console.error('Error fetching Group Requests:', error.message);
-      }
-    };
+  const [allGroups, setAllGroups] = useState([
+    { id: 7, name: 'All Group 1' },
+    { id: 8, name: 'All Group 2' },
+    { id: 9, name: 'All Group 3' },
+  ]);
 
-    fetchMyGroups();
-    fetchPopularGroups();
-    fetchGroupRequests();
-  }, []);
+  const handleClosePopup = (setPopupState) => {
+    setPopupState(false);
+  };
 
   return (
     <>
       <div className="groups-container">
-        <h2 className="groups-header2">MOVIEHUB Community</h2>
-        <div className="groups-info">
-          <h2 className="groups-header">My Groups</h2>
-          {myGroups.length > 0 ? (
-            <ul className="groups-list">
-              {myGroups.map((group) => (
-                <li key={group.id} className="groups-item">
-                  {group.name}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="groups-message">You don't have any groups.</p>
-          )}
+        <h2>MOVIEHUB Community</h2>
+
+        {/* My Groups List */}
+        <div>
+         <div className="groups-info"> 
+          <label>My Groups:</label>
+          <button class="glow-on-hover"
+          type="button" onClick={() => setShowMyGroupsPopup(true)}>
+            Show more
+          </button>
+          <Popup
+            title="My Groups"
+            showPopup={showMyGroupsPopup}
+            onClose={() => handleClosePopup(setShowMyGroupsPopup)}
+            fetchFunction={() => '/api/my-groups'} // Korvaa oikealla polulla
+            renderItem={(group) => <span key={group.id}>{group.name}</span>}
+          />
         </div>
 
-        <div className="groups-info">
-          <h2 className="groups-header">Popular Groups</h2>
-          {popularGroups.length > 0 ? (
-            <ul className="groups-list">
-              {popularGroups.map((group) => (
-                <li key={group.id} className="groups-item">
-                  {group.name}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="groups-message">No popular groups at the moment.</p>
-          )}
+        {/* Popular Groups List */}
+        <div>
+         <div className="groups-info"> 
+          <label>Popular Groups:</label>
+          <button class="glow-on-hover"
+          type="button" onClick={() => setShowPopularGroupsPopup(true)}>
+            Show more
+          </button>
+          <Popup
+            title="Popular Groups"
+            showPopup={showPopularGroupsPopup}
+            onClose={() => handleClosePopup(setShowPopularGroupsPopup)}
+            fetchFunction={() => '/api/popular-groups'} // Korvaa oikealla polulla
+            renderItem={(group) => <span key={group.id}>{group.name}</span>}
+          />
         </div>
 
-        <div className="groups-info">
-          <h2 className="groups-header">Make Group(s)</h2>
-          {/* Tässä voipi lissää mahiksen tehdä uusi ryhmä ja hallita liittymispyyntöjä */}
+        {/* All Groups List */}
+        <div>
+         <div className="groups-info"> 
+          <label>All Groups:</label>
+          <button class="glow-on-hover"
+          type="button" onClick={() => setShowAllGroupsPopup(true)}>
+            Show more
+          </button>
+          <Popup
+            title="All Groups"
+            showPopup={showAllGroupsPopup}
+            onClose={() => handleClosePopup(setShowAllGroupsPopup)}
+            fetchFunction={() => '/api/all-groups'} // Korvaa oikealla polulla
+            renderItem={(group) => <span key={group.id}>{group.name}</span>}
+          />
         </div>
       </div>
-
+      </div>
+      </div>  
+      </div>  
       {/* TopBar/Footer component */}
       <TopBar />
       <Footer />
