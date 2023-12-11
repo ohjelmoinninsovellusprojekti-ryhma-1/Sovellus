@@ -5,14 +5,14 @@ import '../App.css';
 import TopBar from '../components/topbar.js';
 import Footer from '../components/footer.js';
 
-
 export const User = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showFriendsPopup, setShowFriendsPopup] = useState(false);
   const [showGroupsPopup, setShowGroupsPopup] = useState(false);
   const [showFavoritesPopup, setShowFavoritesPopup] = useState(false);
-
+  
   const [userData, setUserData] = useState({
+    
     id: 1,
     username: 'user_id', // Tämä on käyttäjänimi, ei nimi!!!
     name: 'Olaf Svensson',
