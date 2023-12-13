@@ -22,6 +22,7 @@
     "pg-hstore": "^2.3.4",
     "querystring-es3": "^0.2.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.19.0",

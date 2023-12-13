@@ -22,7 +22,7 @@ app.listen(port, () => {
 });
 
 // Käyttäjän tietojen päivittäminen!!
-app.put('/user', async (req, res) => {
+app.post('/user', async (req, res) => {
   const { id, name, email, birthdate, phone_number, address, pronouns } = req.body;
   try {
     const result = await pool.query(
@@ -85,6 +85,66 @@ app.post('/groups', async (req, res) => {
     res.json(result.rows[0]);
   } catch (error) {
     console.error('Error creating group:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Tässä serverikoodi Make A Newille!!
+app.post('/api/createGroup', async (req, res) => {
+  const { groupName, groupDescription, ownerId } = req.body;
+  console.log('Received create group request. Request body:', req.body);
+
+  const client = await pool.connect();
+
+  try {
+    await client.query('BEGIN');
+
+    const result = await client.query(
+      'INSERT INTO groups (group_name, group_description, owner_id) VALUES ($1, $2, $3) RETURNING *',
+      [groupName, groupDescription, ownerId]
+    );
+
+    await client.query('COMMIT');
+
+    console.log('Group creation successful');
+    res.json(result.rows[0]);
+
+  } catch (error) {
+    await client.query('ROLLBACK');
+
+    console.error('Error creating group:', error);
+
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+
+  } finally {
+    client.release();
+  }
+});
+
+app.get('/api/groups', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT group_name, group_description FROM groups');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error retrieving groups:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/api/group/:groupId', async (req, res) => {
+  const groupId = req.params.groupId;
+
+  try {
+    const result = await pool.query('SELECT * FROM groups WHERE group_id = $1', [groupId]);
+
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Group not found' });
+    } else {
+      res.json(result.rows[0]);
+    }
+
+  } catch (error) {
+    console.error('Error retrieving group:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

@@ -13,7 +13,7 @@ const Footer = () => {
     <div className="footer-container">
       <div className="footer-content">
         <p>&copy; 2023 MOVIEHUB ENTERTAINMENT</p>
-        <p>All rights reserved.</p>
+        <p>All rights reserved</p>
         {isLoggedIn ? (
           <button type="button" onClick={handleLogOut} className="logout-button">
             Log Out
