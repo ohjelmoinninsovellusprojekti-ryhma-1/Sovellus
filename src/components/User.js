@@ -227,7 +227,7 @@ const handleClosePopup = (setPopupState) => {
       <span>{userData.pronouns}</span>
   )}
 <div>
-        {/* Edit and Save buttons */}
+        {/* Edit and Save -napit */}
         {isEditing ? (
           <button type="button" onClick={handleSaveClick}>
             Save
@@ -242,7 +242,7 @@ const handleClosePopup = (setPopupState) => {
         {/* Tähän voipi lisätä kamaa jos tuntuu siltä */}
         {/* ... */}
 
-        {/* Profile Picture */}
+        {/* Profile Picture -toiminnallisuus */}
         <div className="you">
           <label>Profile picture:</label>
           <img src={userData.profilePicture} alt="" />
@@ -261,10 +261,9 @@ const handleClosePopup = (setPopupState) => {
         </div>
         </div>
         <div className="user-info"> 
-             {/* Friends List */}
+             {/* Friends -lista/luettelo */}
              <div>
           <label>Friends:</label>
-          {/* ... */}
           <button type="button" onClick={() => setShowFriendsPopup(true)}>
             Show more
           </button>
@@ -279,10 +278,9 @@ const handleClosePopup = (setPopupState) => {
          />
         </div>
 
-        {/* Groups List */}
+        {/* Groups -lista */}
         <div>
           <label>Groups:</label>
-          {/* ... */}
           <button type="button" onClick={() => setShowGroupsPopup(true)}>
             Show more
           </button>
@@ -297,10 +295,9 @@ const handleClosePopup = (setPopupState) => {
           />
         </div>
 
-        {/* Favorites List */}
+        {/* Favorites -lista */}
         <div>
           <label>My Favorites:</label>
-          {/* ... */}
           <button type="button" onClick={() => setShowFavoritesPopup(true)}>
             Show more
           </button>
@@ -315,7 +312,7 @@ const handleClosePopup = (setPopupState) => {
           />
         </div>
 
-        {/* Account Managment */}
+        {/* Account Managment -toiminnallisuudet */}
       </div>
         <div className="account-container">
          <div className="account-header">
@@ -336,7 +333,6 @@ const handleClosePopup = (setPopupState) => {
       </div>
     
     
-{/* TopBar/Footer component */}
     <TopBar />
     <Footer />
     </>

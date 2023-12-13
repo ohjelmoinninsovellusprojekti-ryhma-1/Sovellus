@@ -198,11 +198,11 @@ const Makenew = () => {
             title="Group Members"
             showPopup={showMembersPopup}
             onClose={() => setShowMembersPopup(false)}
-            fetchFunction={() => 'http://localhost:5000/api/groupMembers'} // Määrittele oikea reitti hakeaksesi ryhmän jäsenet
-            renderItem={(item) => <div key={item}>{item}</div>} // Määrittele, miten jäsenet renderöidään
+            fetchFunction={() => 'http://localhost:5000/api/groupMembers'} 
+            renderItem={(item) => <div key={item}>{item}</div>} // Muista määrittellä, miten jäsenet renderöidään!!
           />
           
-          {/* TopBar ja Footer yhteen div-elementtiin käärittynä */}
+          
           <div>
             <TopBar />
             <Footer />

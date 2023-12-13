@@ -39,6 +39,8 @@ export const Groups = () => {
    }
   };
 
+  // Jää ehkä vajaaksi tämän tarkoitus kun luotu makenew -toiminnallisuus
+  // Jätän nyt kuitenkin tämän tähän jatko jalostusta varten
   const handleMakeNew = async (newGroupName) => {
     const confirmation = window.confirm('Are you sure you want to make new group');
     if (confirmation) {
@@ -65,7 +67,6 @@ export const Groups = () => {
         const response = await axios.delete(`http://localhost:3001/groups/${groupId}`);
 
         if (response.status === 200) {
-          // Voidaan suorittaapi lisätoimenpiteitä tarvittaessa!!
           console.log('Group and data deleted successfully');
         } else {
           console.error('Failed to delete group, please try again or contact our customer service');
@@ -80,7 +81,7 @@ export const Groups = () => {
   const placeholderGroupId = 1;
 
   useEffect(() => {
-    // Hae käyttäjän ryhmät
+    // Hae käyttäjän ryhmät:
     axios.get('http://localhost:3001/groups')
       .then((response) => {
         setMyGroups(response.data);
@@ -89,7 +90,7 @@ export const Groups = () => {
         console.error('Error fetching user groups:', error);
       });
 
-    // Hae suosituimmat ryhmät
+    // Hae suosituimmat ryhmät:
     axios.get('http://localhost:3001/groups/popular')
       .then((response) => {
         setPopularGroups(response.data);
@@ -98,7 +99,7 @@ export const Groups = () => {
         console.error('Error fetching popular groups:', error);
       });
 
-    // Hae kaikki ryhmät
+    // Hae kaikki ryhmät:
     axios.get('http://localhost:3001/groups/all')
       .then((response) => {
         setAllGroups(response.data);
@@ -113,7 +114,7 @@ export const Groups = () => {
       <div className="groups-container">
         <h2>MOVIEHUB Community</h2>
 
-        {/* My Groups List */}
+        {/* My Groups -lista */}
         <div>
           <div className="groups-info">
             <label>My Groups:</label>
@@ -129,7 +130,7 @@ export const Groups = () => {
             />
           </div>
 
-          {/* Popular Groups List */}
+          {/* Popular Groups -lista */}
           <div>
             <div className="groups-info">
               <label>Popular Groups:</label>
@@ -145,7 +146,7 @@ export const Groups = () => {
               />
             </div>
 
-            {/* All Groups List */}
+            {/* All Groups -lista */}
             <div>
               <div className="groups-info">
                 <label>All Groups:</label>
@@ -162,20 +163,20 @@ export const Groups = () => {
               </div>
             </div>
 
-            {/* Manage Groups */}
+            {/* Manage Groups -kohta */}
             <div className="groups-info">
               <div className="account-header">
                 <label>Manage Groups</label>
               </div>
               <div className="account">
-                {/* Muokattu tässä kohtaa, lisätty placeholder-ryhmä */}
+                {/* Tässä kohtaa placeholder-ryhmä */}
                 <button className="glow-on-hover" type="button" onClick={() => handleChangeGroupname(placeholderGroupId, 'New Name')}>
                   Edit name
                 </button>
                 <button className="glow-on-hover" type="button" onClick={() => navigate('/makenew')}>
                   Make a new
                 </button>
-                {/* Muokattu tässä kohtaa, lisätty placeholder-ryhmä */}
+                {/* Tässä kohtaa placeholder-ryhmä */}
                 <button className="glow-on-hover" type="button" onClick={() => handleDeleteGroup(placeholderGroupId)}>
                   Delete
                 </button>
@@ -184,7 +185,7 @@ export const Groups = () => {
           </div>
         </div>
       </div>
-      {/* TopBar/Footer component */}
+
       <TopBar />
       <Footer />
     </>

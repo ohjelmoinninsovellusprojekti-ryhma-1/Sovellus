@@ -21,7 +21,7 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-// Käyttäjän tietojen päivittäminen!!
+// Käyttäjän tietojen päivittäminen -toiminnallisuus (User.js)
 app.post('/user', async (req, res) => {
   const { id, name, email, birthdate, phone_number, address, pronouns } = req.body;
   try {
@@ -36,7 +36,7 @@ app.post('/user', async (req, res) => {
   }
 });
 
-// Käyttäjän tietojen hakeminen!!
+// Käyttäjän tietojen hakeminen -toiminto (User.js)
 app.get('/user-get', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM info');
@@ -47,7 +47,7 @@ app.get('/user-get', async (req, res) => {
   }
 });
 
-// Ryhmien hakeminen!!
+// Ryhmien hakeminen -toiminta (Groups.js)
 app.get('/groups', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM groups');
@@ -58,7 +58,7 @@ app.get('/groups', async (req, res) => {
   }
 });
 
-// Ryhmän nimen päivittäminen!!
+// Ryhmän nimen päivittäminen!! (Groups.js)
 app.put('/groups/:id', async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -74,7 +74,9 @@ app.put('/groups/:id', async (req, res) => {
   }
 });
 
-// Uuden ryhmän luominen!!
+// Uuden ryhmän luominen -toiminto (Groups.js)
+// Tältä viety idea kun nykyään nappi Groups.js:stä vie suoraan makenew toimintoon
+// Jätän kuitenkin tämän tähän jatkojalostusta varten!!
 app.post('/groups', async (req, res) => {
   const { name } = req.body;
   try {
@@ -89,38 +91,30 @@ app.post('/groups', async (req, res) => {
   }
 });
 
-// Tässä serverikoodi Make A Newille!!
+// Tässä serverikoodi Make A Newille (Makenew.js)
 app.post('/api/createGroup', async (req, res) => {
   const { groupName, groupDescription, ownerId } = req.body;
   console.log('Received create group request. Request body:', req.body);
-
   const client = await pool.connect();
-
   try {
     await client.query('BEGIN');
-
     const result = await client.query(
       'INSERT INTO groups (group_name, group_description, owner_id) VALUES ($1, $2, $3) RETURNING *',
       [groupName, groupDescription, ownerId]
     );
-
     await client.query('COMMIT');
-
     console.log('Group creation successful');
     res.json(result.rows[0]);
-
   } catch (error) {
     await client.query('ROLLBACK');
-
     console.error('Error creating group:', error);
-
     res.status(500).json({ success: false, error: 'Internal Server Error' });
-
   } finally {
     client.release();
   }
 });
 
+// (Groups.js)
 app.get('/api/groups', async (req, res) => {
   try {
     const result = await pool.query('SELECT group_name, group_description FROM groups');
@@ -131,25 +125,24 @@ app.get('/api/groups', async (req, res) => {
   }
 });
 
+// (Groups.js)
 app.get('/api/group/:groupId', async (req, res) => {
   const groupId = req.params.groupId;
 
   try {
     const result = await pool.query('SELECT * FROM groups WHERE group_id = $1', [groupId]);
-
     if (result.rows.length === 0) {
       res.status(404).json({ error: 'Group not found' });
     } else {
       res.json(result.rows[0]);
     }
-
   } catch (error) {
     console.error('Error retrieving group:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Ryhmän poistaminen!!
+// Ryhmän poistaminen -toiminto
 app.delete('/groups/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -164,8 +157,9 @@ app.delete('/groups/:id', async (req, res) => {
   }
 });
 
+// Liityttyjen ryhmien hakeminen -toiminto (Groups.js)
 app.get('/groups/joined-groups', async (req, res) => {
-  const userId = req.query.userId; // Olettaen, että käyttäjän id välitetään query-parametrina
+  const userId = req.query.userId;
   try {
     const result = await pool.query(
       'SELECT * FROM groups WHERE id IN (SELECT group_id FROM user_groups WHERE user_id = $1)',
@@ -178,8 +172,9 @@ app.get('/groups/joined-groups', async (req, res) => {
   }
 });
 
+// Käyttäjän omistamien ryhmien hakeminen -toiminto (Groups.js)
 app.get('/groups/owned-groups', async (req, res) => {
-  const userId = req.query.userId; // Olettaen, että käyttäjän id välitetään query-parametrina
+  const userId = req.query.userId;
   try {
     const result = await pool.query('SELECT * FROM groups WHERE owner_id = $1', [userId]);
     res.json(result.rows);
@@ -189,9 +184,10 @@ app.get('/groups/owned-groups', async (req, res) => {
   }
 });
 
+// Ryhmään liittyminen -toiminto (Groups.js)
 app.post('/groups/join/:id', async (req, res) => {
   const { id } = req.params;
-  const userId = req.body.userId; // Olettaen, että käyttäjän id välitetään pyynnön rungossa
+  const userId = req.body.userId;
   try {
     await pool.query('INSERT INTO user_groups (user_id, group_id) VALUES ($1, $2)', [userId, id]);
     res.status(200).send('Joined group successfully');
@@ -201,9 +197,10 @@ app.post('/groups/join/:id', async (req, res) => {
   }
 });
 
+// Ryhmästä poistuminen -toiminto (Groups.js)
 app.post('/groups/leave/:id', async (req, res) => {
   const { id } = req.params;
-  const userId = req.body.userId; // Olettaen, että käyttäjän id välitetään pyynnön rungossa
+  const userId = req.body.userId;
   try {
     await pool.query('DELETE FROM user_groups WHERE user_id = $1 AND group_id = $2', [userId, id]);
     res.status(200).send('Left group successfully');
