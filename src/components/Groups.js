@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Popup from '../components/Popup.js';
 import '../App.css';
 import TopBar from '../components/topbar.js';
@@ -13,6 +14,7 @@ export const Groups = () => {
   const [myGroups, setMyGroups] = useState([]);
   const [popularGroups, setPopularGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
+  const navigate = useNavigate();
 
   const handleClosePopup = (setPopupState) => {
     setPopupState(false);
@@ -170,7 +172,7 @@ export const Groups = () => {
                 <button className="glow-on-hover" type="button" onClick={() => handleChangeGroupname(placeholderGroupId, 'New Name')}>
                   Edit name
                 </button>
-                <button className="glow-on-hover" type="button" onClick={() => handleMakeNew('New Group')}>
+                <button className="glow-on-hover" type="button" onClick={() => navigate('/makenew')}>
                   Make a new
                 </button>
                 {/* Muokattu tässä kohtaa, lisätty placeholder-ryhmä */}
@@ -190,3 +192,5 @@ export const Groups = () => {
 };
 
 export default Groups;
+
+
