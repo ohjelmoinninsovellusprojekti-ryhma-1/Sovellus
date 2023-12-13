@@ -449,7 +449,7 @@ flex:1;
 .makenew-container {
   border-radius: 8px;
   margin: 0 auto; 
-  padding: 20px;
+  padding: 0px 20px 30px 20px;
   width: 95%;
 }
 .makenew-info {
@@ -468,4 +468,38 @@ flex:1;
 .makenew-header {
   font-size: 24px;
   margin-bottom: 15px;
+}
+.makenew-container input,
+.makenew-container textarea {
+  flex-basis: 55%;
+  width: 70%;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 15px;
+}
+
+.form-group {
+  display: absolute;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.text-container {
+  color: rgb(255, 149, 0);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  padding: 5px 0;
+  z-index: 500;
+  height: auto
+}
+
+.text-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }

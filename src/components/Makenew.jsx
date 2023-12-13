@@ -96,9 +96,25 @@ const Makenew = () => {
   
     return (
         <div>
+            <div className="user-container"></div>
+            <h2 >Create a New Group</h2>
+            <div className="text-container"></div>
+            <div className="text-content"></div>
+            <p>Please ensure that you are logged into your user account</p>
+            <p>before initiating the creation of a new group. The functionality to</p>
+            <p> establish a group is exclusively accessible to signed-in users.</p>
+            <p>Your cooperation in adhering to this prerequisite is greatly appreciated.</p>
+            <div className="form-group">
+                <Button
+                  className="glow-on-hover"
+                  onClick={handleLoginClick}
+                  id="log"
+                >
+                  Click here to login
+                </Button>
+              </div>
           <div className="makenew-container">
             <div className="makenew-info">
-              <h1 className="makenew-header">Create a New Group</h1>
               <form onSubmit={handleSubmit} action="/createGroup" method="POST">
                 <div className="form-group">
                   <label htmlFor="groupName">Group Name:</label>
@@ -173,15 +189,7 @@ const Makenew = () => {
                 </div>
               </form>
       
-              <div className="form-group">
-                <Button
-                  className="glow-on-hover"
-                  onClick={handleLoginClick}
-                  id="log"
-                >
-                  Click here to login
-                </Button>
-              </div>
+
             </div>
           </div>
       
