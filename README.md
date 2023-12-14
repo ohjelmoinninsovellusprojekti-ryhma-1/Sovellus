@@ -1,8 +1,8 @@
 MOVIEHUB-SIVUSTO README
 
-Tervetuloa tutustumaan MOVIEHUB-sivustoomme! Tässä README-tiedostossa esittelemme projektiamme, sen tarkoitusta, teknologioita, tekijöitä sekä muita olennaisia näkökulmia, jotta GitHubin käyttäjät, erityisesti alan ammattilaiset ja kanssa opiskelijat, saavat kattavan käsityksen siitä, mitä olemme toteuttaneet. Projekti on osa 
+Tervetuloa tutustumaan MOVIEHUB-sivustoomme! Tässä README-tiedostossa esittelemme projektiamme, sen tarkoitusta, teknologioita, tekijöitä sekä muita olennaisia näkökulmia, jotta GitHubin käyttäjät, erityisesti alan ammattilaiset ja kanssa opiskelijat, saavat kattavan käsityksen siitä, mitä olemme toteuttaneet. 
 
-Oulun Ammattikorkeakoulun tieto- ja viestintätekniikan insinöörialan opetussuunnitelmaa.  
+Projekti on osa Oulun Ammattikorkeakoulun tieto- ja viestintätekniikan insinöörialan opetussuunnitelmaa.  
 
 PROJEKTIN KUVAUS
 Kyseessä on elokuvasivusto, joka tarjoaa käyttäjille mahdollisuuden rekisteröityä, selata elokuva-arvosteluja, kirjoittaa omia arvostelujaan ja löytää helposti seuraavan katselukokemuksensa "Random movie" -toiminnon avulla (kätevä valinnanvaikeuden iskiessä). Lisäksi sivustolla voi lukea elokuva-aiheisia uutisia, ja käyttäjillä on mahdollisuus tallentaa suosikkielokuvansa.
