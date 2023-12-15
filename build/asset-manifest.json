@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.50075980.css",
+    "main.js": "/static/js/main.92e2155c.js",
+    "static/js/787.c6f072ba.chunk.js": "/static/js/787.c6f072ba.chunk.js",
+    "static/media/Akon - Lonely.mp3": "/static/media/Akon - Lonely.b871afec4f94a91f68e0.mp3",
+    "static/media/nofriends.jpg": "/static/media/nofriends.7533e06c3bfebe8ec8d2.jpg",
+    "static/media/poppins-devanagari-400-normal.woff": "/static/media/poppins-devanagari-400-normal.0e11b62db931f85340d4.woff",
+    "static/media/poppins-devanagari-400-normal.woff2": "/static/media/poppins-devanagari-400-normal.64d5f06ee726edd58ca3.woff2",
+    "static/media/poppins-latin-400-normal.woff": "/static/media/poppins-latin-400-normal.cda9c93f49237f11c766.woff",
+    "static/media/poppins-latin-400-normal.woff2": "/static/media/poppins-latin-400-normal.405055dd680fa1dcdfa2.woff2",
+    "static/media/poppins-latin-ext-400-normal.woff": "/static/media/poppins-latin-ext-400-normal.8cc52669c8e8a6735699.woff",
+    "static/media/poppins-latin-ext-400-normal.woff2": "/static/media/poppins-latin-ext-400-normal.4f38b4331448d2313adc.woff2",
+    "index.html": "/index.html",
+    "main.50075980.css.map": "/static/css/main.50075980.css.map",
+    "main.92e2155c.js.map": "/static/js/main.92e2155c.js.map",
+    "787.c6f072ba.chunk.js.map": "/static/js/787.c6f072ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50075980.css",
+    "static/js/main.92e2155c.js"
+  ]
+}
