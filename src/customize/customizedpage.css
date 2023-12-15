@@ -1,0 +1,101 @@
+body {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+.CustomizedPageh{
+  text-align: center;
+  padding:20px;
+}
+.shlink{
+  padding:10px;
+  margin-bottom:5px;
+}
+
+.CustomizedPage {
+  text-align: center;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+h1 {
+  color: #f59e0b;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.section h2 {
+  color: #f59e0b;
+}
+
+.preferences-section {
+  margin-top: 20px;
+}
+
+.preferences-section div {
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.preferences-section h2 {
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.preferences-section p {
+  margin-bottom: 15px;
+}
+
+.preferences-section img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.CustomizedSection {
+  flex: 1;
+  width: 45%;
+  min-width: 600px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+  text-align: center;
+  color: #f8fafc;
+}
+
+.CustomizedSection h2 {
+  color: #f59e0b;
+}
+
+@media only screen and (max-width: 600px) {
+  .CustomizedPage {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+
+  .CustomizedSection {
+    width: 80%;
+    min-width: auto;
+    margin-left:30px;
+    max-height:600px;
+  }
+}
+
+  
+ 

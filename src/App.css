@@ -1,0 +1,239 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --background-color: #000000;
+  --primary-text-color: #f8fafc;
+  --card-bg-color: #fdba74;
+
+
+}
+body{
+  background-color: var(--background-color);
+  overflow-x: hidden;
+
+}
+.App {
+  text-align: center;
+}
+.content {
+  margin-top: 190px;
+}
+
+h1 {
+  color: #f59e0b;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.main{
+  display:flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; 
+  padding: 10px;
+  margin-bottom: 20px; 
+  margin-left:15px;
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px; 
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+ 
+}
+.search-bar select {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+  margin-right: 10px;
+}
+
+.search-bar select:hover {
+  background-color: #000000;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px; 
+  background-color: #f59e0b; 
+  color: #0c0a09; 
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+.search-bar button:hover {
+  background-color: #fff7ed; 
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.NavigationButtons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: background-color 0.3s ease-out;
+  
+ 
+}
+
+.NavigationButton {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  color: #0c0a09;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: background-color 0.3s ease-out;
+}
+
+.NavigationButton:hover {
+  background-color: #f59e0b;
+  cursor: pointer;
+  color: white;
+  transform: scale(1.05); 
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.NavigationButton p {
+  margin: 0;
+  color: transparent;
+}
+
+.NavigationButton button {
+  font-size: 16px; 
+  background: none;
+  border: none;
+  color: #0c0a09;
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+  height: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.NavigationButton:hover button {
+  color: white;
+}
+
+.FinnkinoNewsComponent {
+  text-align: center;
+  margin-top: 50px;
+  
+}
+
+.FinnkinoNewsList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.FinnkinoNewsItem {
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  width: 45%; 
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+.FinnkinoNewsItem h3 {
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.FinnkinoNewsItem p {
+  margin-bottom: 15px;
+}
+
+.FinnkinoNewsItem a {
+  color: var(--orange);
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.FinnkinoNewsItem img {
+  max-width: 100%; 
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+}
+
+@media only screen and (max-width: 600px) {
+  .FinnkinoNewsItem {
+    width: 90%; 
+  }
+}
+
+.footer-container {
+  color: rgb(255, 149, 0);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.0); 
+  text-align: center;
+  padding: 5px 0;
+  z-index: 500;
+  height: auto;
+  
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+@media screen and (max-width: 600px){
+  .footer-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    text-align: center;
+    padding: 5px 0;
+    z-index: 500;
+    height: auto;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+  }
+}
+
+
