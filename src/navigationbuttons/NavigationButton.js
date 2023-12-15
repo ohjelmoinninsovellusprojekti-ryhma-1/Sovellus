@@ -4,6 +4,7 @@ import MovieNavigationButton from './MovieNavigationButton';
 import TVSeriesNavigationButton from './TVSeriesNavigationButton';
 import { faStar, faFilm, faTv, faPlay } from '@fortawesome/free-solid-svg-icons';
 
+
 const NavigationButtons = ({ isMovies }) => {
   const commonButtons = [
     { icon: faStar, to: isMovies ? '/top-rated-movies' : '/top-rated-tv', label: '' },
