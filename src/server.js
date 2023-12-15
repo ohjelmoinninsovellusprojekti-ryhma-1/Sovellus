@@ -210,6 +210,43 @@ app.post('/groups/leave/:id', async (req, res) => {
   }
 });
 
+ // Tässä voit hakea käyttäjän omat blogikirjoitukset tietokannasta
+app.get('/api/my-blogs', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM blogs WHERE user_id = $1', [req.userId]);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error fetching my blogs:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+  // Tässä voit hakea kaikki blogikirjoitukset tietokannasta
+app.get('/api/all-blogs', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM blogs');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error fetching all blogs:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Uuden blogitekstin luominen
+app.post('/blogs', async (req, res) => {
+  const { title, content } = req.body;
+  try {
+    const result = await pool.query(
+      'INSERT INTO blogs (title, content) VALUES ($1, $2) RETURNING *',
+      [title, content]
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error creating blog post:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 /*app.listen(3001, () => {
   console.log('Server is running on port 3001');
 // }); */

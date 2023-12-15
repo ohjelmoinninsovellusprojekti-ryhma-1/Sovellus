@@ -6,6 +6,8 @@ import { Register } from "./register.jsx";
 import User from './components/User.js';
 import Groups from './components/Groups.js';
 import Makenew from './components/Makenew.jsx';
+import Blogs from './components/blogs.js';
+
 
 
 
@@ -20,6 +22,7 @@ function App() {
           <Route path ="/user" element = { <User />} />
           <Route path ="/groups" element = { <Groups />} />
           <Route path="/makenew" element={<Makenew />} />
+          <Route path="/blogs" component={<Blogs />} />
         </Routes>
       </Router>
     </header>
