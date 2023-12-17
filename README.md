@@ -44,8 +44,6 @@ LOPPUTULOS
 Projektin lopputulos on dynaaminen ja käyttäjäystävällinen elokuvasivusto, joka yhdistää sujuvasti eri teknologiat ja tarjoaa monipuolisen valikoiman toimintoja elokuvien ja arvostelujen parissa.
 Tutustu sivustoon ja anna palautetta – olemme avoimia kehitysehdotuksille ja odotamme innolla, että voimme jatkaa sivuston kehittämistä yhdessä käyttäjäyhteisömme kanssa.
 
-Linkki sovellukseen: MOVIEHUB-sivusto (tee hyperlinkki)
-
 Ystävällisin terveisin, MOVIEHUB tiimi
 
 ![image](https://github.com/ohjelmoinninsovellusprojekti-ryhma-1/Sovellus/assets/122618664/c1c8ff3e-67cb-4bbc-9139-58dd9dab61a3)
